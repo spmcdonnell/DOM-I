@@ -63,8 +63,6 @@ document.querySelector('#start').addEventListener('click', function() {
 
             return;
         }
-
-        console.log(secondTens.textContent);
     }
 
     var msTensIterator = 0;
