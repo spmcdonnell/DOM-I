@@ -47,10 +47,24 @@ let logo = document.getElementById('logo-img');
 logo.setAttribute('src', siteContent['nav']['img-src']);
 
 // Nav
-var navItems = document.querySelectorAll('nav a');
+var nav = document.querySelector('nav');
+
+nav.appendChild(document.createElement('a'));
+nav.appendChild(document.createElement('a'));
+
+nav.children[6].setAttribute('href', '#');
+nav.children[7].setAttribute('href', '#');
+
+var navItems = nav.querySelectorAll('a');
+
 navItems.forEach((item, index) => {
     item.textContent = siteContent['nav'][`nav-item-${index + 1}`];
+    item.style.color = 'green';
+    console.log(index);
 });
+
+nav.children[6].textContent = 'Hello';
+nav.children[7].textContent = 'World';
 
 // CTA
 document.getElementsByTagName('h1')[0].textContent = siteContent.cta.h1;
