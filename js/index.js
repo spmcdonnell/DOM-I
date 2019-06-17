@@ -60,7 +60,6 @@ var navItems = nav.querySelectorAll('a');
 navItems.forEach((item, index) => {
     item.textContent = siteContent['nav'][`nav-item-${index + 1}`];
     item.style.color = 'green';
-    console.log(index);
 });
 
 nav.children[6].textContent = 'Hello';
@@ -103,3 +102,35 @@ contactParagraphs[2].textContent = siteContent.contact.email;
 
 // Footer
 document.querySelector('footer p').textContent = siteContent.footer.copyright;
+
+/* ------------------
+STRETCH GOALS
+------------------ */
+
+// Original styles
+var styleObj = {
+    padding: '2%',
+    border: '1px dashed #000',
+    borderRadius: '10px',
+    margin: '2% auto',
+    boxShadow: '0px 0px 4px 3px rgba(0, 0, 0, 0.4)',
+    backgroundColor: 'rgba(255, 255, 255, 0.5)'
+};
+
+var bodyStyle = document.querySelector('.container').style;
+
+bodyStyle.padding = styleObj.padding;
+bodyStyle.border = styleObj.border;
+bodyStyle.borderRadius = styleObj.borderRadius;
+bodyStyle.margin = styleObj.margin;
+bodyStyle.boxShadow = styleObj.boxShadow;
+bodyStyle.backgroundColor = styleObj.backgroundColor;
+
+document.querySelector('#middle-img').style.width = '100%';
+
+// Change BG color on click
+document.querySelector('button').addEventListener('click', function() {
+    document.querySelector('body').style.backgroundColor = `rgb(${Math.round(Math.floor(Math.random() * (255 - 0 + 1)))}, ${Math.round(Math.floor(Math.random() * (255 - 0 + 1)))}, ${Math.round(
+        Math.floor(Math.random() * (255 - 0 + 1))
+    )})`;
+});
