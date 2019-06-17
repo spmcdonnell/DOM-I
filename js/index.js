@@ -33,7 +33,7 @@ const siteContent = {
     },
     contact: {
         'contact-h4': 'Contact',
-        address: '123 Way 456 Street Somewhere, USA',
+        address: '123 Way 456 Street<br>Somewhere, USA',
         phone: '1 (888) 888-8888',
         email: 'sales@greatidea.io'
     },
@@ -46,7 +46,7 @@ const siteContent = {
 let logo = document.getElementById('logo-img');
 logo.setAttribute('src', siteContent['nav']['img-src']);
 
-// Nav Items
+// Nav
 var navItems = document.querySelectorAll('nav a');
 navItems.forEach((item, index) => {
     item.textContent = siteContent['nav'][`nav-item-${index + 1}`];
@@ -56,3 +56,36 @@ navItems.forEach((item, index) => {
 document.getElementsByTagName('h1')[0].textContent = siteContent.cta.h1;
 document.querySelector('button').textContent = siteContent.cta.button;
 document.getElementById('cta-img').src = siteContent.cta['img-src'];
+
+// Main Content
+var topContent = document.querySelector('.top-content');
+var bottomContent = document.querySelector('.bottom-content');
+
+topContent.children[0].children[0].textContent = siteContent['main-content']['features-h4'];
+topContent.children[0].children[1].textContent = siteContent['main-content']['features-content'];
+
+topContent.children[1].children[0].textContent = siteContent['main-content']['about-h4'];
+topContent.children[1].children[1].textContent = siteContent['main-content']['about-content'];
+
+document.querySelector('#middle-img').setAttribute('src', siteContent['main-content']['middle-img-src']);
+
+bottomContent.children[0].children[0].textContent = siteContent['main-content']['services-h4'];
+bottomContent.children[0].children[1].textContent = siteContent['main-content']['services-content'];
+
+bottomContent.children[1].children[0].textContent = siteContent['main-content']['product-h4'];
+bottomContent.children[1].children[1].textContent = siteContent['main-content']['product-content'];
+
+bottomContent.children[2].children[0].textContent = siteContent['main-content']['vision-h4'];
+bottomContent.children[2].children[1].textContent = siteContent['main-content']['vision-content'];
+
+// Contact
+var contactParagraphs = document.querySelector('.contact').querySelectorAll('p');
+
+document.querySelector('.contact').querySelector('h4').textContent = siteContent.contact['contact-h4'];
+
+contactParagraphs[0].innerHTML = siteContent.contact.address;
+contactParagraphs[1].textContent = siteContent.contact.phone;
+contactParagraphs[2].textContent = siteContent.contact.email;
+
+// Footer
+document.querySelector('footer p').textContent = siteContent.footer.copyright;
