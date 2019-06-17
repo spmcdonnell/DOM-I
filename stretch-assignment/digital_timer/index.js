@@ -4,74 +4,78 @@ var secondTens = document.getElementById('secondTens'),
     msHundreds = document.getElementById('msHundreds'),
     msTens = document.getElementById('msTens');
 
-secondTens.textContent = 0;
-secondOnes.textContent = 0;
-msHundreds.textContent = 0;
-msTens.textContent = 0;
+document.querySelector('#start').addEventListener('click', function() {
+    document.querySelector('.digits').style.color = 'black';
 
-function msTensFunc() {
-    msTensInterator++;
+    secondTens.textContent = 0;
+    secondOnes.textContent = 0;
+    msHundreds.textContent = 0;
+    msTens.textContent = 0;
 
-    if (msTensInterator > 9) {
-        msTensInterator = 0;
+    function msTensFunc() {
+        msTensIterator++;
+
+        if (msTensIterator > 9) {
+            msTensIterator = 0;
+        }
+
+        msTens.textContent = msTensIterator;
     }
 
-    msTens.textContent = msTensInterator;
-}
+    function msHundredsFunc() {
+        msHundredsIterator++;
 
-function msHundredsFunc() {
-    msHundredsInterator++;
+        if (msHundredsIterator > 9) {
+            msHundredsIterator = 0;
+        }
 
-    if (msHundredsInterator > 9) {
-        msHundredsInterator = 0;
+        msHundreds.textContent = msHundredsIterator;
     }
 
-    msHundreds.textContent = msHundredsInterator;
-}
+    function secondOnesFunc() {
+        secondOnesIterator++;
 
-function secondOnesFunc() {
-    secondOnesInterator++;
+        if (secondOnesIterator > 9) {
+            secondOnesIterator = 0;
+        }
 
-    if (secondOnesInterator > 9) {
-        secondOnesInterator = 0;
+        secondOnes.textContent = secondOnesIterator;
     }
 
-    secondOnes.textContent = secondOnesInterator;
-}
+    function secondTensFunc() {
+        secondTensIterator++;
 
-function secondTensFunc() {
-    secondTensInterator++;
+        secondTens.textContent = secondTensIterator;
 
-    secondTens.textContent = secondTensInterator;
+        if (secondTensIterator === 1) {
+            secondTens.textContent = 1;
+            secondOnes.textContent = 0;
+            msHundreds.textContent = 0;
+            msTens.textContent = 0;
 
-    if (secondTensInterator === 1) {
-        secondTens.textContent = 1;
-        secondOnes.textContent = 0;
-        msHundreds.textContent = 0;
-        msTens.textContent = 0;
+            document.querySelector('.digits').style.color = 'red';
+            document.querySelector('#colon').style.color = 'black';
 
-        document.querySelector('.digits').style.color = 'red';
-        document.querySelector('#colon').style.color = 'black';
+            clearInterval(timerOne);
+            clearInterval(timerTwo);
+            clearInterval(timerThree);
+            clearInterval(timerFour);
 
-        clearInterval(timerOne);
-        clearInterval(timerTwo);
-        clearInterval(timerThree);
-        clearInterval(timerFour);
+            return;
+        }
 
-        return;
+        console.log(secondTens.textContent);
     }
 
-    console.log(secondTens.textContent);
-}
+    var msTensIterator = 0;
+    var timerOne = setInterval(msTensFunc, 10);
 
-var msTensInterator = 0;
-var timerOne = setInterval(msTensFunc, 10);
+    var msHundredsIterator = 0;
+    var timerTwo = setInterval(msHundredsFunc, 100);
 
-var msHundredsInterator = 0;
-var timerTwo = setInterval(msHundredsFunc, 100);
+    var secondOnesIterator = 0;
+    var timerThree = setInterval(secondOnesFunc, 1000);
 
-var secondOnesInterator = 0;
-var timerThree = setInterval(secondOnesFunc, 1000);
-
-var secondTensInterator = 0;
-var timerFour = setInterval(secondTensFunc, 10000);
+    var secondTensIterator = 0;
+    var timerFour = setInterval(secondTensFunc, 10000);
+});
